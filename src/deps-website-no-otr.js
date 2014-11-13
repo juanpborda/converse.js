@@ -1,23 +1,24 @@
 define("converse-dependencies", [
     "jquery",
+    "utils",
     "moment",
     "locales",
-    "bootstrap", // XXX: Can be removed, only for https://conversejs.org
+    "bootstrapJS", // XXX: Can be removed, only for https://conversejs.org
     "backbone.browserStorage",
     "backbone.overview",
     "jquery.browser",
     "jquery.easing", // XXX: Can be removed, only for https://conversejs.org
     "typeahead",
-    "utils",
     "strophe",
     "strophe.muc",
     "strophe.roster",
     "strophe.vcard",
     "strophe.disco"
-], function($, moment) {
+], function($, utils, moment) {
     return {
         'jQuery': $,
         'otr': undefined,
-        'moment': moment
+        'moment': moment,
+        'utils': utils
     };
 });

@@ -1,26 +1,27 @@
-config = {
+require.config({
     baseUrl: '.',
     paths: {
         "backbone":                 "components/backbone/backbone",
         "backbone.browserStorage":  "components/backbone.browserStorage/backbone.browserStorage",
         "backbone.overview":        "components/backbone.overview/backbone.overview",
-        "bootstrap":                "components/bootstrap/dist/js/bootstrap",                  // XXX: Only required for https://conversejs.org website
+        "bootstrap":                "components/bootstrap/dist/js/bootstrap",           // XXX: Only required for https://conversejs.org website
+        "bootstrapJS":              "components/bootstrapJS/index",                     // XXX: Only required for https://conversejs.org website
         "converse-dependencies":    "src/deps-website",
         "converse-templates":       "src/templates",
         "eventemitter":             "components/otr/build/dep/eventemitter",
         "jquery":                   "components/jquery/dist/jquery",
         "jquery-private":           "src/jquery-private",
-        "jquery.browser":           "components/jquery.browser/dist/jquery.browser",
-        "jquery.easing":            "components/jquery-easing-original/jquery.easing.1.3", // XXX: Only required for https://conversejs.org website
+        "jquery.browser":           "components/jquery.browser/index",
+        "jquery.easing":            "components/jquery-easing-original/index",          // XXX: Only required for https://conversejs.org website
         "moment":                   "components/momentjs/moment",
         "strophe":                  "components/strophe/strophe",
-        "strophe.disco":            "components/strophe.disco/index",
+        "strophe.disco":            "components/strophejs-plugins/disco/strophe.disco",
         "strophe.muc":              "components/strophe.muc/index",
-        "strophe.roster":           "components/strophe.roster/index",
-        "strophe.vcard":            "components/strophe.vcard/index",
+        "strophe.roster":           "src/strophe.roster",
+        "strophe.vcard":            "components/strophejs-plugins/vcard/strophe.vcard",
         "text":                     'components/requirejs-text/text',
         "tpl":                      'components/requirejs-tpl-jcbrand/tpl',
-        "typeahead":                "components/typeahead.js/dist/typeahead.jquery",
+        "typeahead":                "components/typeahead.js/index",
         "underscore":               "components/underscore/underscore",
         "utils":                    "src/utils",
 
@@ -105,6 +106,16 @@ config = {
         "trimmed_chat":             "src/templates/trimmed_chat"
     },
 
+    map: {
+        // '*' means all modules will get 'jquery-private'
+        // for their 'jquery' dependency.
+        '*': { 'jquery': 'jquery-private' },
+        // 'jquery-private' wants the real jQuery module
+        // though. If this line was not here, there would
+        // be an unresolvable cyclic dependency.
+        'jquery-private': { 'jquery': 'jquery' }
+    },
+
     tpl: {
         // Configuration for requirejs-tpl
         // Use Mustache style syntax for variable interpolation
@@ -117,7 +128,6 @@ config = {
     // define module dependencies for modules not using define
     shim: {
         'underscore':           { exports: '_' },
-        'bootstrap':            { deps: ['jquery'] },
         'crypto.aes':           { deps: ['crypto.cipher-core'] },
         'crypto.cipher-core':   { deps: ['crypto.enc-base64', 'crypto.evpkdf'] },
         'crypto.enc-base64':    { deps: ['crypto.core'] },
@@ -129,19 +139,13 @@ config = {
         'crypto.sha1':          { deps: ['crypto.core'] },
         'crypto.sha256':        { deps: ['crypto.core'] },
         'bigint':               { deps: ['crypto'] },
-        'typeahead':            { deps: ['jquery'] },
-        'jquery.browser':       { deps: ['jquery'] },
-        'jquery.easing':        { deps: ['jquery'] },
+        'strophe':              { exports: 'Strophe' },
         'strophe.disco':        { deps: ['strophe'] },
         'strophe.muc':          { deps: ['strophe'] },
         'strophe.roster':       { deps: ['strophe'] },
         'strophe.vcard':        { deps: ['strophe'] }
     }
-};
-
-if (typeof(require) !== 'undefined') {
-    require.config(config);
-    require(["jquery", "converse"], function($, converse) {
-        window.converse = converse;
-    });
-}
+});
+require(["converse"], function(converse) {
+    window.converse = converse;
+});
