@@ -103,7 +103,13 @@ require.config({
         "status_option":            "src/templates/status_option",
         "toggle_chats":             "src/templates/toggle_chats",
         "toolbar":                  "src/templates/toolbar",
-        "trimmed_chat":             "src/templates/trimmed_chat"
+        "trimmed_chat":             "src/templates/trimmed_chat",
+
+        // custom libs 
+        "toastr": "components/toastr/toastr",
+        "datatables": "components/datatables/media/js/jquery.dataTables.min",
+        "datatables-bootstrap3": "components/datatables-bootstrap3/BS3/assets/js/datatables",
+        "blockui": "components/blockui/jquery.blockUI"
     },
 
     map: {
@@ -143,9 +149,13 @@ require.config({
         'strophe.disco':        { deps: ['strophe'] },
         'strophe.muc':          { deps: ['strophe'] },
         'strophe.roster':       { deps: ['strophe'] },
-        'strophe.vcard':        { deps: ['strophe'] }
+        'strophe.vcard':        { deps: ['strophe'] },
+
+        // custom        
+        'datatables-bootstrap3' : { deps: ['datatables'] },        
+        'toastr':               { exports: 'toastr' },
     }
 });
-require(["converse"], function(converse) {
+require(["converse", "jquery"], function(converse, $) {
     window.converse = converse;
 });

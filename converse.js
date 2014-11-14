@@ -3512,9 +3512,9 @@
 
             // TODO: see if we can only use 2nd item par
             rosterHandler: function (items, item) {
-                converse.emit('roster', items);
-                this.clearCache(items);
-                var new_items = item ? [item] : items;
+                //converse.emit('roster', items);     
+                this.clearCache(items);           
+                var new_items = item ? [item] : items;                
                 _.each(new_items, function (item, index, items) {
                     if (this.isSelf(item.jid)) { return; }
                     var model = this.get(item.jid);

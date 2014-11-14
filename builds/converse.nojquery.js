@@ -29334,7 +29334,7 @@ Strophe.addConnectionPlugin('roster',
                 oldCallback.apply(this, arguments);
             }
         };
-        conn.connect = function(jid, pass, callback, wait, hold)
+        conn.connect = function(jid, pass, callback, wait, hold, route)
         {
             oldCallback = callback;
             if (typeof jid  == "undefined")
@@ -29342,7 +29342,7 @@ Strophe.addConnectionPlugin('roster',
             if (typeof pass == "undefined")
                 pass = null;
             callback = newCallback;
-            _connect.apply(conn, [jid, pass, callback, wait, hold]);
+            _connect.apply(conn, [jid, pass, callback, wait, hold, route]);
         };
         conn.attach = function(jid, sid, rid, callback, wait, hold, wind)
         {
@@ -30510,15 +30510,15 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="chat-message '+
 ((__t=(extra_classes))==null?'':__t)+
-'">\n    <span class="chat-message-'+
+'">\r\n    <span class="chat-message-'+
 ((__t=(sender))==null?'':__t)+
 '">'+
 ((__t=(time))==null?'':__t)+
 ' **'+
 ((__t=(username))==null?'':__t)+
-' </span>\n    <span class="chat-message-content">'+
+' </span>\r\n    <span class="chat-message-content">'+
 ((__t=(message))==null?'':__t)+
-'</span>\n</div>\n';
+'</span>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30527,11 +30527,11 @@ return __p;
 define('tpl!add_contact_dropdown', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<dl class="add-converse-contact dropdown">\n    <dt id="xmpp-contact-search" class="fancy-dropdown">\n        <a class="toggle-xmpp-contact-form" href="#"\n            title="'+
+__p+='<dl class="add-converse-contact dropdown">\r\n    <dt id="xmpp-contact-search" class="fancy-dropdown">\r\n        <a class="toggle-xmpp-contact-form" href="#"\r\n            title="'+
 ((__t=(label_click_to_chat))==null?'':__t)+
-'">\n        <span class="icon-plus"></span>'+
+'">\r\n        <span class="icon-plus"></span>'+
 ((__t=(label_add_contact))==null?'':__t)+
-'</a>\n    </dt>\n    <dd class="search-xmpp" style="display:none"><ul></ul></dd>\n</dl>\n';
+'</a>\r\n    </dt>\r\n    <dd class="search-xmpp" style="display:none"><ul></ul></dd>\r\n</dl>\r\n';
 }
 return __p;
 }; });
@@ -30540,11 +30540,11 @@ return __p;
 define('tpl!add_contact_form', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<li>\n    <form class="add-xmpp-contact">\n        <input type="text"\n            name="identifier"\n            class="username"\n            placeholder="'+
+__p+='<li>\r\n    <form class="add-xmpp-contact">\r\n        <input type="text"\r\n            name="identifier"\r\n            class="username"\r\n            placeholder="'+
 ((__t=(label_contact_username))==null?'':__t)+
-'"/>\n        <button type="submit">'+
+'"/>\r\n        <button type="submit">'+
 ((__t=(label_add))==null?'':__t)+
-'</button>\n    </form>\n</li>\n';
+'</button>\r\n    </form>\r\n</li>\r\n';
 }
 return __p;
 }; });
@@ -30553,13 +30553,13 @@ return __p;
 define('tpl!change_status_message', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<form id="set-custom-xmpp-status">\n    <input type="text" class="custom-xmpp-status" '+
+__p+='<form id="set-custom-xmpp-status">\r\n    <input type="text" class="custom-xmpp-status" '+
 ((__t=(status_message))==null?'':__t)+
-'\n        placeholder="'+
+'\r\n        placeholder="'+
 ((__t=(label_custom_status))==null?'':__t)+
-'"/>\n    <button type="submit">'+
+'"/>\r\n    <button type="submit">'+
 ((__t=(label_save))==null?'':__t)+
-'</button>\n</form>\n';
+'</button>\r\n</form>\r\n';
 }
 return __p;
 }; });
@@ -30568,19 +30568,19 @@ return __p;
 define('tpl!chat_status', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<div class="xmpp-status">\n    <a class="choose-xmpp-status '+
+__p+='<div class="xmpp-status">\r\n    <a class="choose-xmpp-status '+
 ((__t=(chat_status))==null?'':__t)+
-'"\n       data-value="'+
+'"\r\n       data-value="'+
 ((__t=(status_message))==null?'':__t)+
-'"\n       href="#" title="'+
+'"\r\n       href="#" title="'+
 ((__t=(desc_change_status))==null?'':__t)+
-'">\n\n        <span class="icon-'+
+'">\r\n\r\n        <span class="icon-'+
 ((__t=(chat_status))==null?'':__t)+
 '"></span>'+
 ((__t=(status_message))==null?'':__t)+
-'\n    </a>\n    <a class="change-xmpp-status-message icon-pencil"\n        href="#"\n        title="'+
+'\r\n    </a>\r\n    <a class="change-xmpp-status-message icon-pencil"\r\n        href="#"\r\n        title="'+
 ((__t=(desc_custom_status))==null?'':__t)+
-'"></a>\n</div>\n';
+'"></a>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30589,13 +30589,13 @@ return __p;
 define('tpl!chatarea', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<div class="chat-area">\n    <div class="chat-content"></div>\n    <form class="sendXMPPMessage" action="" method="post">\n        ';
+__p+='<div class="chat-area">\r\n    <div class="chat-content"></div>\r\n    <form class="sendXMPPMessage" action="" method="post">\r\n        ';
  if (show_toolbar) { 
-__p+='\n            <ul class="chat-toolbar no-text-select"></ul>\n        ';
+__p+='\r\n            <ul class="chat-toolbar no-text-select"></ul>\r\n        ';
  } 
-__p+='\n        <textarea type="text" class="chat-textarea" \n            placeholder="'+
+__p+='\r\n        <textarea type="text" class="chat-textarea" \r\n            placeholder="'+
 ((__t=(label_message))==null?'':__t)+
-'"/>\n    </form>\n</div>\n';
+'"/>\r\n    </form>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30606,25 +30606,25 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="box-flyout" style="height: '+
 ((__t=(height))==null?'':__t)+
-'px">\n    <div class="dragresize dragresize-tm"></div>\n    <div class="chat-head chat-head-chatbox">\n        <a class="close-chatbox-button icon-close"></a>\n        <a class="toggle-chatbox-button icon-minus"></a>\n        <div class="chat-title">\n            ';
+'px">\r\n    <div class="dragresize dragresize-tm"></div>\r\n    <div class="chat-head chat-head-chatbox">\r\n        <a class="close-chatbox-button icon-close"></a>\r\n        <a class="toggle-chatbox-button icon-minus"></a>\r\n        <div class="chat-title">\r\n            ';
  if (url) { 
-__p+='\n                <a href="'+
+__p+='\r\n                <a href="'+
 ((__t=(url))==null?'':__t)+
-'" target="_blank" class="user">\n            ';
+'" target="_blank" class="user">\r\n            ';
  } 
-__p+='\n                    '+
+__p+='\r\n                    '+
 ((__t=( fullname ))==null?'':__t)+
-'\n            ';
+'\r\n            ';
  if (url) { 
-__p+='\n                </a>\n            ';
+__p+='\r\n                </a>\r\n            ';
  } 
-__p+='\n        </div>\n        <p class="user-custom-message"><p/>\n    </div>\n    <div class="chat-body">\n        <div class="chat-content"></div>\n        <form class="sendXMPPMessage" action="" method="post">\n            ';
+__p+='\r\n        </div>\r\n        <p class="user-custom-message"><p/>\r\n    </div>\r\n    <div class="chat-body">\r\n        <div class="chat-content"></div>\r\n        <form class="sendXMPPMessage" action="" method="post">\r\n            ';
  if (show_toolbar) { 
-__p+='\n                <ul class="chat-toolbar no-text-select"></ul>\n            ';
+__p+='\r\n                <ul class="chat-toolbar no-text-select"></ul>\r\n            ';
  } 
-__p+='\n        <textarea\n            type="text"\n            class="chat-textarea"\n            placeholder="'+
+__p+='\r\n        <textarea\r\n            type="text"\r\n            class="chat-textarea"\r\n            placeholder="'+
 ((__t=(label_personal_message))==null?'':__t)+
-'"/>\n        </form>\n    </div>\n</div>\n';
+'"/>\r\n        </form>\r\n    </div>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30635,13 +30635,13 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="box-flyout" style="height: '+
 ((__t=(height))==null?'':__t)+
-'px"\n    ';
+'px"\r\n    ';
  if (minimized) { 
 __p+=' style="display:none" ';
  } 
-__p+='>\n    <div class="dragresize dragresize-tm"></div>\n    <div class="chat-head chat-head-chatroom">\n        <a class="close-chatbox-button icon-close"></a>\n        <a class="toggle-chatbox-button icon-minus"></a>\n        <a class="configure-chatroom-button icon-wrench" style="display:none"></a>\n        <div class="chat-title"> '+
+__p+='>\r\n    <div class="dragresize dragresize-tm"></div>\r\n    <div class="chat-head chat-head-chatroom">\r\n        <a class="close-chatbox-button icon-close"></a>\r\n        <a class="toggle-chatbox-button icon-minus"></a>\r\n        <a class="configure-chatroom-button icon-wrench" style="display:none"></a>\r\n        <div class="chat-title"> '+
 ((__t=( name ))==null?'':__t)+
-' </div>\n        <p class="chatroom-topic"><p/>\n    </div>\n    <div class="chat-body"><span class="spinner centered"/></div>\n</div>\n';
+' </div>\r\n        <p class="chatroom-topic"><p/>\r\n    </div>\r\n    <div class="chat-body"><span class="spinner centered"/></div>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30650,13 +30650,13 @@ return __p;
 define('tpl!chatroom_password_form', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<div class="chatroom-form-container">\n    <form class="chatroom-form">\n        <legend>'+
+__p+='<div class="chatroom-form-container">\r\n    <form class="chatroom-form">\r\n        <legend>'+
 ((__t=(heading))==null?'':__t)+
-'</legend>\n        <label>'+
+'</legend>\r\n        <label>'+
 ((__t=(label_password))==null?'':__t)+
-'<input type="password" name="password"/></label>\n        <input type="submit" value="'+
+'<input type="password" name="password"/></label>\r\n        <input type="submit" value="'+
 ((__t=(label_submit))==null?'':__t)+
-'"/>\n    </form>\n</div>\n';
+'"/>\r\n    </form>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30665,11 +30665,11 @@ return __p;
 define('tpl!chatroom_sidebar', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<!-- <div class="participants"> -->\n<form class="room-invite">\n    <input class="invited-contact" placeholder="'+
+__p+='<!-- <div class="participants"> -->\r\n<form class="room-invite">\r\n    <input class="invited-contact" placeholder="'+
 ((__t=(label_invitation))==null?'':__t)+
-'" type="text"/>\n</form>\n<label>'+
+'" type="text"/>\r\n</form>\r\n<label>'+
 ((__t=(label_occupants))==null?'':__t)+
-':</label>\n<ul class="participant-list"></ul>\n<!-- </div> -->\n';
+':</label>\r\n<ul class="participant-list"></ul>\r\n<!-- </div> -->\r\n';
 }
 return __p;
 }; });
@@ -30680,7 +30680,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<li><a class="s" href="#chatrooms">'+
 ((__t=(label_rooms))==null?'':__t)+
-'</a></li>\n';
+'</a></li>\r\n';
 }
 return __p;
 }; });
@@ -30689,7 +30689,7 @@ return __p;
 define('tpl!chats_panel', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<div id="minimized-chats">\n    <a id="toggle-minimized-chats" href="#"></a>\n    <div class="minimized-chats-flyout"></div>\n</div>\n';
+__p+='<div id="minimized-chats">\r\n    <a id="toggle-minimized-chats" href="#"></a>\r\n    <div class="minimized-chats-flyout"></div>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30698,7 +30698,7 @@ return __p;
 define('tpl!choose_status', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<dl id="target" class="dropdown">\n    <dt id="fancy-xmpp-status-select" class="fancy-dropdown"></dt>\n    <dd><ul class="xmpp-status-menu"></ul></dd>\n</dl>\n';
+__p+='<dl id="target" class="dropdown">\r\n    <dt id="fancy-xmpp-status-select" class="fancy-dropdown"></dt>\r\n    <dd><ul class="xmpp-status-menu"></ul></dd>\r\n</dl>\r\n';
 }
 return __p;
 }; });
@@ -30707,21 +30707,21 @@ return __p;
 define('tpl!contacts_panel', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<form class="set-xmpp-status" action="" method="post">\n    <span id="xmpp-status-holder">\n        <select id="select-xmpp-status" style="display:none">\n            <option value="online">'+
+__p+='<form class="set-xmpp-status" action="" method="post">\r\n    <span id="xmpp-status-holder">\r\n        <select id="select-xmpp-status" style="display:none">\r\n            <option value="online">'+
 ((__t=(label_online))==null?'':__t)+
-'</option>\n            <option value="dnd">'+
+'</option>\r\n            <option value="dnd">'+
 ((__t=(label_busy))==null?'':__t)+
-'</option>\n            <option value="away">'+
+'</option>\r\n            <option value="away">'+
 ((__t=(label_away))==null?'':__t)+
-'</option>\n            <option value="offline">'+
+'</option>\r\n            <option value="offline">'+
 ((__t=(label_offline))==null?'':__t)+
-'</option>\n            ';
+'</option>\r\n            ';
  if (allow_logout)  { 
-__p+='\n            <option value="logout">'+
+__p+='\r\n            <option value="logout">'+
 ((__t=(label_logout))==null?'':__t)+
-'</option>\n            ';
+'</option>\r\n            ';
  } 
-__p+='\n        </select>\n    </span>\n</form>\n';
+__p+='\r\n        </select>\r\n    </span>\r\n</form>\r\n';
 }
 return __p;
 }; });
@@ -30732,7 +30732,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<li><a class="s current" href="#users">'+
 ((__t=(label_contacts))==null?'':__t)+
-'</a></li>\n';
+'</a></li>\r\n';
 }
 return __p;
 }; });
@@ -30743,7 +30743,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="box-flyout" style="height: '+
 ((__t=(height))==null?'':__t)+
-'px">\n    <div class="dragresize dragresize-tm"></div>\n    <div class="chat-head controlbox-head">\n        <ul id="controlbox-tabs"></ul>\n        <a class="close-chatbox-button icon-close"></a>\n    </div>\n    <div class="controlbox-panes"></div>\n</div>\n';
+'px">\r\n    <div class="dragresize dragresize-tm"></div>\r\n    <div class="chat-head controlbox-head">\r\n        <ul id="controlbox-tabs"></ul>\r\n        <a class="close-chatbox-button icon-close"></a>\r\n    </div>\r\n    <div class="controlbox-panes"></div>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30754,7 +30754,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<span class="conn-feedback">'+
 ((__t=(label_toggle))==null?'':__t)+
-'</span>\n<span style="display: none" id="online-count">(0)</span>\n';
+'</span>\r\n<span style="display: none" id="online-count">(0)</span>\r\n';
 }
 return __p;
 }; });
@@ -30767,7 +30767,7 @@ __p+='<field var="'+
 ((__t=(name))==null?'':__t)+
 '"><value>'+
 ((__t=(value))==null?'':__t)+
-'</value></field>\n';
+'</value></field>\r\n';
 }
 return __p;
 }; });
@@ -30784,7 +30784,7 @@ __p+='<label>'+
 ((__t=(type))==null?'':__t)+
 '" '+
 ((__t=(checked))==null?'':__t)+
-'></label>\n';
+'></label>\r\n';
 }
 return __p;
 }; });
@@ -30801,7 +30801,7 @@ __p+='<label>'+
 ((__t=(type))==null?'':__t)+
 '" value="'+
 ((__t=(value))==null?'':__t)+
-'"></label>\n';
+'"></label>\r\n';
 }
 return __p;
 }; });
@@ -30816,7 +30816,7 @@ __p+='<label>'+
 ((__t=(name))==null?'':__t)+
 '">'+
 ((__t=(options))==null?'':__t)+
-'</select></label>\n';
+'</select></label>\r\n';
 }
 return __p;
 }; });
@@ -30831,7 +30831,7 @@ __p+='<a href="#" class="group-toggle icon-'+
 ((__t=(desc_group_toggle))==null?'':__t)+
 '">'+
 ((__t=(label_group))==null?'':__t)+
-'</a>\n';
+'</a>\r\n';
 }
 return __p;
 }; });
@@ -30842,7 +30842,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="chat-info">'+
 ((__t=(message))==null?'':__t)+
-'</div>\n';
+'</div>\r\n';
 }
 return __p;
 }; });
@@ -30851,13 +30851,13 @@ return __p;
 define('tpl!login_panel', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<form id="converse-login" method="post">\n    <label>'+
+__p+='<form id="converse-login" method="post">\r\n    <label>'+
 ((__t=(label_username))==null?'':__t)+
-'</label>\n    <input type="username" name="jid" placeholder="Username">\n    <label>'+
+'</label>\r\n    <input type="username" name="jid" placeholder="Username">\r\n    <label>'+
 ((__t=(label_password))==null?'':__t)+
-'</label>\n    <input type="password" name="password" placeholder="Password">\n    <input class="login-submit" type="submit" value="'+
+'</label>\r\n    <input type="password" name="password" placeholder="Password">\r\n    <input class="login-submit" type="submit" value="'+
 ((__t=(label_login))==null?'':__t)+
-'">\n    <span class="conn-feedback"></span>\n</form>\n';
+'">\r\n    <span class="conn-feedback"></span>\r\n</form>\r\n';
 }
 return __p;
 }; });
@@ -30868,7 +30868,7 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<li><a class="current" href="#login">'+
 ((__t=(label_sign_in))==null?'':__t)+
-'</a></li>\n';
+'</a></li>\r\n';
 }
 return __p;
 }; });
@@ -30879,15 +30879,15 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<div class="chat-message '+
 ((__t=(extra_classes))==null?'':__t)+
-'">\n    <span class="chat-message-'+
+'">\r\n    <span class="chat-message-'+
 ((__t=(sender))==null?'':__t)+
 '">'+
 ((__t=(time))==null?'':__t)+
 ' '+
 ((__t=(username))==null?'':__t)+
-':&nbsp;</span>\n    <span class="chat-message-content">'+
+':&nbsp;</span>\r\n    <span class="chat-message-content">'+
 ((__t=(message))==null?'':__t)+
-'</span>\n</div>\n';
+'</span>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -30900,7 +30900,7 @@ __p+='<time class="chat-date" datetime="'+
 ((__t=(isodate))==null?'':__t)+
 '">'+
 ((__t=(datestring))==null?'':__t)+
-'</time>\n';
+'</time>\r\n';
 }
 return __p;
 }; });
@@ -30911,27 +30911,27 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<li class="'+
 ((__t=(role))==null?'':__t)+
-'"\n    ';
+'"\r\n    ';
  if (role === "moderator") { 
-__p+='\n       title="'+
+__p+='\r\n       title="'+
 ((__t=(desc_moderator))==null?'':__t)+
-'"\n    ';
+'"\r\n    ';
  } 
-__p+='\n    ';
+__p+='\r\n    ';
  if (role === "participant") { 
-__p+='\n       title="'+
+__p+='\r\n       title="'+
 ((__t=(desc_participant))==null?'':__t)+
-'"\n    ';
+'"\r\n    ';
  } 
-__p+='\n    ';
+__p+='\r\n    ';
  if (role === "visitor") { 
-__p+='\n       title="'+
+__p+='\r\n       title="'+
 ((__t=(desc_visitor))==null?'':__t)+
-'"\n    ';
+'"\r\n    ';
  } 
-__p+='\n>'+
+__p+='\r\n>'+
 ((__t=(nick))==null?'':__t)+
-'</li>\n';
+'</li>\r\n';
 }
 return __p;
 }; });
@@ -30944,7 +30944,7 @@ __p+='<span class="pending-contact-name">'+
 ((__t=(fullname))==null?'':__t)+
 '</span> <a class="remove-xmpp-contact icon-remove" title="'+
 ((__t=(desc_remove))==null?'':__t)+
-'" href="#"></a>\n';
+'" href="#"></a>\r\n';
 }
 return __p;
 }; });
@@ -30959,7 +30959,7 @@ __p+='<dt id="pending-xmpp-contacts"><a href="#" class="group-toggle icon-'+
 ((__t=(desc_group_toggle))==null?'':__t)+
 '">'+
 ((__t=(label_pending_contacts))==null?'':__t)+
-'</a></dt>\n';
+'</a></dt>\r\n';
 }
 return __p;
 }; });
@@ -30970,11 +30970,11 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<span class="req-contact-name">'+
 ((__t=(fullname))==null?'':__t)+
-'</span>\n<span class="request-actions">\n    <a class="accept-xmpp-request icon-checkmark" title="'+
+'</span>\r\n<span class="request-actions">\r\n    <a class="accept-xmpp-request icon-checkmark" title="'+
 ((__t=(desc_accept))==null?'':__t)+
-'" href="#"></a>\n    <a class="decline-xmpp-request icon-close" title="'+
+'" href="#"></a>\r\n    <a class="decline-xmpp-request icon-close" title="'+
 ((__t=(desc_decline))==null?'':__t)+
-'" href="#"></a>\n</span>\n';
+'" href="#"></a>\r\n</span>\r\n';
 }
 return __p;
 }; });
@@ -30989,7 +30989,7 @@ __p+='<dt id="xmpp-contact-requests"><a href="#" class="group-toggle icon-'+
 ((__t=(desc_group_toggle))==null?'':__t)+
 '">'+
 ((__t=(label_contact_requests))==null?'':__t)+
-'</a></dt>\n';
+'</a></dt>\r\n';
 }
 return __p;
 }; });
@@ -30998,83 +30998,83 @@ return __p;
 define('tpl!room_description', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<!-- FIXME: check markup in mockup -->\n<div class="room-info">\n<p class="room-info"><strong>'+
+__p+='<!-- FIXME: check markup in mockup -->\r\n<div class="room-info">\r\n<p class="room-info"><strong>'+
 ((__t=(label_desc))==null?'':__t)+
 '</strong> '+
 ((__t=(desc))==null?'':__t)+
-'</p>\n<p class="room-info"><strong>'+
+'</p>\r\n<p class="room-info"><strong>'+
 ((__t=(label_occ))==null?'':__t)+
 '</strong> '+
 ((__t=(occ))==null?'':__t)+
-'</p>\n<p class="room-info"><strong>'+
+'</p>\r\n<p class="room-info"><strong>'+
 ((__t=(label_features))==null?'':__t)+
-'</strong>\n    <ul>\n        ';
+'</strong>\r\n    <ul>\r\n        ';
  if (passwordprotected) { 
-__p+='\n        <li class="room-info locked">'+
+__p+='\r\n        <li class="room-info locked">'+
 ((__t=(label_requires_auth))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (hidden) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_hidden))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (membersonly) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_requires_invite))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (moderated) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_moderated))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (nonanonymous) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_non_anon))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (open) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_open_room))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (persistent) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_permanent_room))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (publicroom) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_public))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (semianonymous) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_semi_anon))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (temporary) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_temp_room))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (unmoderated) { 
-__p+='\n        <li class="room-info">'+
+__p+='\r\n        <li class="room-info">'+
 ((__t=(label_unmoderated))==null?'':__t)+
-'</li>\n        ';
+'</li>\r\n        ';
  } 
-__p+='\n    </ul>\n</p>\n</div>\n';
+__p+='\r\n    </ul>\r\n</p>\r\n</div>\r\n';
 }
 return __p;
 }; });
@@ -31083,17 +31083,17 @@ return __p;
 define('tpl!room_item', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<dd class="available-chatroom">\n<a class="open-room" data-room-jid="'+
+__p+='<dd class="available-chatroom">\r\n<a class="open-room" data-room-jid="'+
 ((__t=(jid))==null?'':__t)+
-'"\n   title="'+
+'"\r\n   title="'+
 ((__t=(open_title))==null?'':__t)+
 '" href="#">'+
 ((__t=(name))==null?'':__t)+
-'</a>\n<a class="room-info icon-room-info" data-room-jid="'+
+'</a>\r\n<a class="room-info icon-room-info" data-room-jid="'+
 ((__t=(jid))==null?'':__t)+
-'"\n   title="'+
+'"\r\n   title="'+
 ((__t=(info_title))==null?'':__t)+
-'" href="#">&nbsp;</a>\n</dd>\n';
+'" href="#">&nbsp;</a>\r\n</dd>\r\n';
 }
 return __p;
 }; });
@@ -31102,19 +31102,19 @@ return __p;
 define('tpl!room_panel', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<form class="add-chatroom" action="" method="post">\n    <input type="text" name="chatroom" class="new-chatroom-name"\n        placeholder="'+
+__p+='<form class="add-chatroom" action="" method="post">\r\n    <input type="text" name="chatroom" class="new-chatroom-name"\r\n        placeholder="'+
 ((__t=(label_room_name))==null?'':__t)+
-'"/>\n    <input type="text" name="nick" class="new-chatroom-nick"\n        placeholder="'+
+'"/>\r\n    <input type="text" name="nick" class="new-chatroom-nick"\r\n        placeholder="'+
 ((__t=(label_nickname))==null?'':__t)+
-'"/>\n    <input type="'+
+'"/>\r\n    <input type="'+
 ((__t=(server_input_type))==null?'':__t)+
-'" name="server" class="new-chatroom-server"\n        placeholder="'+
+'" name="server" class="new-chatroom-server"\r\n        placeholder="'+
 ((__t=(label_server))==null?'':__t)+
-'"/>\n    <input type="submit" name="join" value="'+
+'"/>\r\n    <input type="submit" name="join" value="'+
 ((__t=(label_join))==null?'':__t)+
-'"/>\n    <input type="button" name="show" id="show-rooms" value="'+
+'"/>\r\n    <input type="button" name="show" id="show-rooms" value="'+
 ((__t=(label_show_rooms))==null?'':__t)+
-'"/>\n</form>\n<dl id="available-chatrooms"></dl>\n';
+'"/>\r\n</form>\r\n<dl id="available-chatrooms"></dl>\r\n';
 }
 return __p;
 }; });
@@ -31125,11 +31125,11 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='<input style="display: none;" class="roster-filter" placeholder="'+
 ((__t=(placeholder))==null?'':__t)+
-'">\n<select style="display: none;" class="filter-type">\n    <option value="contacts">'+
+'">\r\n<select style="display: none;" class="filter-type">\r\n    <option value="contacts">'+
 ((__t=(label_contacts))==null?'':__t)+
-'</option>\n    <option value="groups">'+
+'</option>\r\n    <option value="groups">'+
 ((__t=(label_groups))==null?'':__t)+
-'</option>\n</select>\n';
+'</option>\r\n</select>\r\n';
 }
 return __p;
 }; });
@@ -31138,7 +31138,9 @@ return __p;
 define('tpl!roster_item', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<a class="open-chat" title="'+
+__p+='<a class="open-chat" data-id="'+
+((__t=(user_id))==null?'':__t)+
+'" title="'+
 ((__t=(desc_chat))==null?'':__t)+
 '" href="#"><span class="icon-'+
 ((__t=(chat_status))==null?'':__t)+
@@ -31146,9 +31148,9 @@ __p+='<a class="open-chat" title="'+
 ((__t=(desc_status))==null?'':__t)+
 '"></span>'+
 ((__t=(fullname))==null?'':__t)+
-'</a>\n<a class="remove-xmpp-contact icon-remove" title="'+
+'</a>\r\n<a class="remove-xmpp-contact icon-remove" title="'+
 ((__t=(desc_remove))==null?'':__t)+
-'" href="#"></a>\n';
+'" href="#"></a>\r\n';
 }
 return __p;
 }; });
@@ -31161,7 +31163,7 @@ __p+='<option value="'+
 ((__t=(value))==null?'':__t)+
 '">'+
 ((__t=(label))==null?'':__t)+
-'</option>\n';
+'</option>\r\n';
 }
 return __p;
 }; });
@@ -31170,11 +31172,11 @@ return __p;
 define('tpl!search_contact', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<li>\n    <form class="search-xmpp-contact">\n        <input type="text"\n            name="identifier"\n            class="username"\n            placeholder="'+
+__p+='<li>\r\n    <form class="search-xmpp-contact">\r\n        <input type="text"\r\n            name="identifier"\r\n            class="username"\r\n            placeholder="'+
 ((__t=(label_contact_name))==null?'':__t)+
-'"/>\n        <button type="submit">'+
+'"/>\r\n        <button type="submit">'+
 ((__t=(label_search))==null?'':__t)+
-'</button>\n    </form>\n</li>\n';
+'</button>\r\n    </form>\r\n</li>\r\n';
 }
 return __p;
 }; });
@@ -31183,15 +31185,15 @@ return __p;
 define('tpl!status_option', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<li>\n    <a href="#" class="'+
+__p+='<li>\r\n    <a href="#" class="'+
 ((__t=( value ))==null?'':__t)+
 '" data-value="'+
 ((__t=( value ))==null?'':__t)+
-'">\n        <span class="icon-'+
+'">\r\n        <span class="icon-'+
 ((__t=( value ))==null?'':__t)+
-'"></span>\n        '+
+'"></span>\r\n        '+
 ((__t=( text ))==null?'':__t)+
-'\n    </a>\n</li>\n';
+'\r\n    </a>\r\n</li>\r\n';
 }
 return __p;
 }; });
@@ -31204,13 +31206,13 @@ __p+=''+
 ((__t=(Minimized))==null?'':__t)+
 ' <span id="minimized-count">('+
 ((__t=(num_minimized))==null?'':__t)+
-')</span>\n<span class="unread-message-count"\n    ';
+')</span>\r\n<span class="unread-message-count"\r\n    ';
  if (!num_unread) { 
 __p+=' style="display: none" ';
  } 
-__p+='\n    href="#">'+
+__p+='\r\n    href="#">'+
 ((__t=(num_unread))==null?'':__t)+
-'</span>\n';
+'</span>\r\n';
 }
 return __p;
 }; });
@@ -31221,77 +31223,77 @@ var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments
 with(obj||{}){
 __p+='';
  if (show_emoticons)  { 
-__p+='\n    <li class="toggle-smiley icon-happy" title="Insert a smilery">\n        <ul>\n            <li><a class="icon-smiley" href="#" data-emoticon=":)"></a></li>\n            <li><a class="icon-wink" href="#" data-emoticon=";)"></a></li>\n            <li><a class="icon-grin" href="#" data-emoticon=":D"></a></li>\n            <li><a class="icon-tongue" href="#" data-emoticon=":P"></a></li>\n            <li><a class="icon-cool" href="#" data-emoticon="8)"></a></li>\n            <li><a class="icon-evil" href="#" data-emoticon=">:)"></a></li>\n            <li><a class="icon-confused" href="#" data-emoticon=":S"></a></li>\n            <li><a class="icon-wondering" href="#" data-emoticon=":\\"></a></li>\n            <li><a class="icon-angry" href="#" data-emoticon=">:("></a></li>\n            <li><a class="icon-sad" href="#" data-emoticon=":("></a></li>\n            <li><a class="icon-shocked" href="#" data-emoticon=":O"></a></li>\n            <li><a class="icon-thumbs-up" href="#" data-emoticon="(^.^)b"></a></li>\n            <li><a class="icon-heart" href="#" data-emoticon="<3"></a></li>\n        </ul>\n    </li>\n';
+__p+='\r\n    <li class="toggle-smiley icon-happy" title="Insert a smilery">\r\n        <ul>\r\n            <li><a class="icon-smiley" href="#" data-emoticon=":)"></a></li>\r\n            <li><a class="icon-wink" href="#" data-emoticon=";)"></a></li>\r\n            <li><a class="icon-grin" href="#" data-emoticon=":D"></a></li>\r\n            <li><a class="icon-tongue" href="#" data-emoticon=":P"></a></li>\r\n            <li><a class="icon-cool" href="#" data-emoticon="8)"></a></li>\r\n            <li><a class="icon-evil" href="#" data-emoticon=">:)"></a></li>\r\n            <li><a class="icon-confused" href="#" data-emoticon=":S"></a></li>\r\n            <li><a class="icon-wondering" href="#" data-emoticon=":\\"></a></li>\r\n            <li><a class="icon-angry" href="#" data-emoticon=">:("></a></li>\r\n            <li><a class="icon-sad" href="#" data-emoticon=":("></a></li>\r\n            <li><a class="icon-shocked" href="#" data-emoticon=":O"></a></li>\r\n            <li><a class="icon-thumbs-up" href="#" data-emoticon="(^.^)b"></a></li>\r\n            <li><a class="icon-heart" href="#" data-emoticon="<3"></a></li>\r\n        </ul>\r\n    </li>\r\n';
  } 
-__p+='\n';
+__p+='\r\n';
  if (show_call_button)  { 
-__p+='\n<li class="toggle-call"><a class="icon-phone" title="'+
+__p+='\r\n<li class="toggle-call"><a class="icon-phone" title="'+
 ((__t=(label_start_call))==null?'':__t)+
-'"></a></li>\n';
+'"></a></li>\r\n';
  } 
-__p+='\n';
+__p+='\r\n';
  if (show_participants_toggle)  { 
-__p+='\n<li class="toggle-participants"><a class="icon-hide-users" title="'+
+__p+='\r\n<li class="toggle-participants"><a class="icon-hide-users" title="'+
 ((__t=(label_hide_participants))==null?'':__t)+
-'"></a></li>\n';
+'"></a></li>\r\n';
  } 
-__p+='\n';
+__p+='\r\n';
  if (show_clear_button)  { 
-__p+='\n<li class="toggle-clear"><a class="icon-remove" title="'+
+__p+='\r\n<li class="toggle-clear"><a class="icon-remove" title="'+
 ((__t=(label_clear))==null?'':__t)+
-'"></a></li>\n';
+'"></a></li>\r\n';
  } 
-__p+='\n';
+__p+='\r\n';
  if (allow_otr)  { 
-__p+='\n    <li class="toggle-otr '+
+__p+='\r\n    <li class="toggle-otr '+
 ((__t=(otr_status_class))==null?'':__t)+
 '" title="'+
 ((__t=(otr_tooltip))==null?'':__t)+
-'">\n        <span class="chat-toolbar-text">'+
+'">\r\n        <span class="chat-toolbar-text">'+
 ((__t=(otr_translated_status))==null?'':__t)+
-'</span>\n        ';
+'</span>\r\n        ';
  if (otr_status == UNENCRYPTED) { 
-__p+='\n            <span class="icon-unlocked"></span>\n        ';
+__p+='\r\n            <span class="icon-unlocked"></span>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (otr_status == UNVERIFIED) { 
-__p+='\n            <span class="icon-lock"></span>\n        ';
+__p+='\r\n            <span class="icon-lock"></span>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (otr_status == VERIFIED) { 
-__p+='\n            <span class="icon-lock"></span>\n        ';
+__p+='\r\n            <span class="icon-lock"></span>\r\n        ';
  } 
-__p+='\n        ';
+__p+='\r\n        ';
  if (otr_status == FINISHED) { 
-__p+='\n            <span class="icon-unlocked"></span>\n        ';
+__p+='\r\n            <span class="icon-unlocked"></span>\r\n        ';
  } 
-__p+='\n        <ul>\n            ';
+__p+='\r\n        <ul>\r\n            ';
  if (otr_status == UNENCRYPTED) { 
-__p+='\n               <li><a class="start-otr" href="#">'+
+__p+='\r\n               <li><a class="start-otr" href="#">'+
 ((__t=(label_start_encrypted_conversation))==null?'':__t)+
-'</a></li>\n            ';
+'</a></li>\r\n            ';
  } 
-__p+='\n            ';
+__p+='\r\n            ';
  if (otr_status != UNENCRYPTED) { 
-__p+='\n               <li><a class="start-otr" href="#">'+
+__p+='\r\n               <li><a class="start-otr" href="#">'+
 ((__t=(label_refresh_encrypted_conversation))==null?'':__t)+
-'</a></li>\n               <li><a class="end-otr" href="#">'+
+'</a></li>\r\n               <li><a class="end-otr" href="#">'+
 ((__t=(label_end_encrypted_conversation))==null?'':__t)+
-'</a></li>\n               <li><a class="auth-otr" data-scheme="smp" href="#">'+
+'</a></li>\r\n               <li><a class="auth-otr" data-scheme="smp" href="#">'+
 ((__t=(label_verify_with_smp))==null?'':__t)+
-'</a></li>\n            ';
+'</a></li>\r\n            ';
  } 
-__p+='\n            ';
+__p+='\r\n            ';
  if (otr_status == UNVERIFIED) { 
-__p+='\n               <li><a class="auth-otr" data-scheme="fingerprint" href="#">'+
+__p+='\r\n               <li><a class="auth-otr" data-scheme="fingerprint" href="#">'+
 ((__t=(label_verify_with_fingerprints))==null?'':__t)+
-'</a></li>\n            ';
+'</a></li>\r\n            ';
  } 
-__p+='\n            <li><a href="http://www.cypherpunks.ca/otr/help/3.2.0/levels.php" target="_blank">'+
+__p+='\r\n            <li><a href="http://www.cypherpunks.ca/otr/help/3.2.0/levels.php" target="_blank">'+
 ((__t=(label_whats_this))==null?'':__t)+
-'</a></li>\n        </ul>\n    </li>\n';
+'</a></li>\r\n        </ul>\r\n    </li>\r\n';
  } 
-__p+='\n';
+__p+='\r\n';
 }
 return __p;
 }; });
@@ -31300,17 +31302,17 @@ return __p;
 define('tpl!trimmed_chat', [],function () { return function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
 with(obj||{}){
-__p+='<a class="close-chatbox-button icon-close"></a>\n<a class="chat-head-message-count" \n    ';
+__p+='<a class="close-chatbox-button icon-close"></a>\r\n<a class="chat-head-message-count" \r\n    ';
  if (!num_unread) { 
 __p+=' style="display: none" ';
  } 
-__p+='\n    href="#">'+
+__p+='\r\n    href="#">'+
 ((__t=(num_unread))==null?'':__t)+
-'</a>\n<a href="#" class="restore-chat" title="'+
+'</a>\r\n<a href="#" class="restore-chat" title="'+
 ((__t=(tooltip))==null?'':__t)+
-'">\n    '+
+'">\r\n    '+
 ((__t=( title ))==null?'':__t)+
-'\n</a>\n';
+'\r\n</a>\r\n';
 }
 return __p;
 }; });
@@ -32235,7 +32237,7 @@ define("converse-templates", [
                 switch (type) {
                     case 'question':
                         this.otr.smpSecret(prompt(__(
-                            'Authentication request from %1$s\n\nYour buddy is attempting to verify your identity, by asking you the question below.\n\n%2$s',
+                            'Authentication request from %1$s\n\nYour chat contact is attempting to verify your identity, by asking you the question below.\n\n%2$s',
                             [this.get('fullname'), data])));
                         break;
                     case 'trust':
@@ -32259,7 +32261,7 @@ define("converse-templates", [
                 // encrypted messages.
                 //
                 // If 'query_msg' is passed in, it means there is an alread incoming
-                // query message from our buddy. Otherwise, it is us who will
+                // query message from our contact. Otherwise, it is us who will
                 // send the query message to them.
                 this.save({'otr_status': UNENCRYPTED});
                 var session = this.getSession($.proxy(function (session) {
@@ -32283,7 +32285,7 @@ define("converse-templates", [
                         this.trigger('showOTRError', msg);
                     }, this));
 
-                    this.trigger('showHelpMessages', [__('Exchanging private key with buddy.')]);
+                    this.trigger('showHelpMessages', [__('Exchanging private key with contact.')]);
                     if (query_msg) {
                         this.otr.receiveMsg(query_msg);
                     } else {
@@ -32407,6 +32409,7 @@ define("converse-templates", [
                 this.model.on('destroy', this.hide, this);
                 this.model.on('change', this.onChange, this);
                 this.model.on('showOTRError', this.showOTRError, this);
+                // XXX: doesn't look like this event is being used?
                 this.model.on('buddyStartsOTR', this.buddyStartsOTR, this);
                 this.model.on('showHelpMessages', this.showHelpMessages, this);
                 this.model.on('sendMessageStanza', this.sendMessageStanza, this);
@@ -32759,7 +32762,7 @@ define("converse-templates", [
                         this.model.save({'otr_status': UNVERIFIED});
                     }
                 } else if (scheme === 'smp') {
-                    alert(__('You will be prompted to provide a security question and then an answer to that question.\n\nYour buddy will then be prompted the same question and if they type the exact same answer (case sensitive), their identity will be verified.'));
+                    alert(__('You will be prompted to provide a security question and then an answer to that question.\n\nYour contact will then be prompted the same question and if they type the exact same answer (case sensitive), their identity will be verified.'));
                     question = prompt(__('What is your security question?'));
                     if (question) {
                         answer = prompt(__('What is the answer to the security question?'));
@@ -32794,10 +32797,14 @@ define("converse-templates", [
                             this.$el.find('div.chat-event').remove();
                         }
                     }
+                    converse.emit('contactStatusChanged', item.attributes, item.get('chat_status'));
+                    // TODO: DEPRECATED AND SHOULD BE REMOVED IN 0.9.0
                     converse.emit('buddyStatusChanged', item.attributes, item.get('chat_status'));
                 }
                 if (_.has(item.changed, 'status')) {
                     this.showStatusMessage();
+                    converse.emit('contactStatusMessageChanged', item.attributes, item.get('status'));
+                    // TODO: DEPRECATED AND SHOULD BE REMOVED IN 0.9.0
                     converse.emit('buddyStatusMessageChanged', item.attributes, item.get('status'));
                 }
                 if (_.has(item.changed, 'image')) {
@@ -32879,11 +32886,11 @@ define("converse-templates", [
                 if (data.otr_status == UNENCRYPTED) {
                     msgs.push(__("Your messages are not encrypted anymore"));
                 } else if (data.otr_status == UNVERIFIED){
-                    msgs.push(__("Your messages are now encrypted but your buddy's identity has not been verified."));
+                    msgs.push(__("Your messages are now encrypted but your contact's identity has not been verified."));
                 } else if (data.otr_status == VERIFIED){
-                    msgs.push(__("Your buddy's identify has been verified."));
+                    msgs.push(__("Your contact's identify has been verified."));
                 } else if (data.otr_status == FINISHED){
-                    msgs.push(__("Your buddy has ended encryption on their end, you should do the same."));
+                    msgs.push(__("Your contact has ended encryption on their end, you should do the same."));
                 }
                 return this.showHelpMessages(msgs, 'info', false);
             },
@@ -32894,11 +32901,11 @@ define("converse-templates", [
                     if (data.otr_status == UNENCRYPTED) {
                         data.otr_tooltip = __('Your messages are not encrypted. Click here to enable OTR encryption.');
                     } else if (data.otr_status == UNVERIFIED){
-                        data.otr_tooltip = __('Your messages are encrypted, but your buddy has not been verified.');
+                        data.otr_tooltip = __('Your messages are encrypted, but your contact has not been verified.');
                     } else if (data.otr_status == VERIFIED){
-                        data.otr_tooltip = __('Your messages are encrypted and your buddy verified.');
+                        data.otr_tooltip = __('Your messages are encrypted and your contact verified.');
                     } else if (data.otr_status == FINISHED){
-                        data.otr_tooltip = __('Your buddy has closed their end of the private session, you should do the same');
+                        data.otr_tooltip = __('Your contact has closed their end of the private session, you should do the same');
                     }
                     this.$el.find('.chat-toolbar').html(
                         converse.templates.toolbar(
@@ -34133,7 +34140,7 @@ define("converse-templates", [
                     delayed = $message.find('delay').length > 0,
                     subject = $message.children('subject').text();
 
-                if (this.model.messages.findWhere({msgid: msgid})) {
+                if (msgid && this.model.messages.findWhere({msgid: msgid})) {
                     return true; // We already have this message stored.
                 }
                 this.showStatusMessages($message);
@@ -34251,7 +34258,9 @@ define("converse-templates", [
 
             onMessage: function (message) {
                 var $message = $(message);
-                var buddy_jid, $forwarded, $received,
+                var contact_jid, $forwarded, $received,
+                    msgid = $message.attr('id'),
+                    chatbox, resource, roster_item,
                     message_from = $message.attr('from');
                 if (message_from === converse.connection.jid) {
                     // FIXME: Forwarded messages should be sent to specific resources,
@@ -34267,42 +34276,51 @@ define("converse-templates", [
                     message_from = $message.attr('from');
                 }
                 var from = Strophe.getBareJidFromJid(message_from),
-                    to = Strophe.getBareJidFromJid($message.attr('to')),
-                    resource, chatbox, roster_item;
+                    to = Strophe.getBareJidFromJid($message.attr('to'));
                 if (from == converse.bare_jid) {
                     // I am the sender, so this must be a forwarded message...
-                    buddy_jid = to;
+                    contact_jid = to;
                     resource = Strophe.getResourceFromJid($message.attr('to'));
                 } else {
-                    buddy_jid = from;
+                    contact_jid = from;
                     resource = Strophe.getResourceFromJid(message_from);
                 }
-                chatbox = this.get(buddy_jid);
-                roster_item = converse.roster.get(buddy_jid);
 
+                roster_item = converse.roster.get(contact_jid);
                 if (roster_item === undefined) {
-                    // The buddy was likely removed
-                    converse.log('Could not get roster item for JID '+buddy_jid, 'error');
+                    // The contact was likely removed
+                    converse.log('Could not get roster item for JID '+contact_jid, 'error');
                     return true;
                 }
 
+                chatbox = this.get(contact_jid);
                 if (!chatbox) {
                     var fullname = roster_item.get('fullname');
-                    fullname = _.isEmpty(fullname)? buddy_jid: fullname;
+                    fullname = _.isEmpty(fullname)? contact_jid: fullname;
                     chatbox = this.create({
-                        'id': buddy_jid,
-                        'jid': buddy_jid,
+                        'id': contact_jid,
+                        'jid': contact_jid,
                         'fullname': fullname,
                         'image_type': roster_item.get('image_type'),
                         'image': roster_item.get('image'),
                         'url': roster_item.get('url')
                     });
                 }
+                if (msgid && chatbox.messages.findWhere({msgid: msgid})) {
+                    // FIXME: There's still a bug here..
+                    // If a duplicate message is received just after the chat
+                    // box was closed, then it'll open again (due to it being
+                    // created here above), with now new messages.
+                    // The solution is mostly likely to not let chat boxes show
+                    // automatically when they are created, but to require
+                    // "show" to be called explicitly.
+                    return true; // We already have this message stored.
+                }
                 if (!this.isOnlyChatStateNotification($message) && from !== converse.bare_jid) {
                     playNotification();
                 }
                 chatbox.receiveMessage($message);
-                converse.roster.addResource(buddy_jid, resource);
+                converse.roster.addResource(contact_jid, resource);
                 converse.emit('message', message);
                 return true;
             }
@@ -34905,9 +34923,9 @@ define("converse-templates", [
 
             // TODO: see if we can only use 2nd item par
             rosterHandler: function (items, item) {
-                converse.emit('roster', items);
-                this.clearCache(items);
-                var new_items = item ? [item] : items;
+                //converse.emit('roster', items);     
+                this.clearCache(items);           
+                var new_items = item ? [item] : items;                
                 _.each(new_items, function (item, index, items) {
                     if (this.isSelf(item.jid)) { return; }
                     var model = this.get(item.jid);
@@ -35835,7 +35853,7 @@ define("converse-templates", [
                  converse.connection.disco.addFeature('http://jabber.org/protocol/rosterx'); // Limited support
                  converse.connection.disco.addFeature('jabber:x:conference');
                  converse.connection.disco.addFeature('urn:xmpp:carbons:2');
-                 converse.connection.disco.addFeature('vcard-temp');
+                 converse.connection.disco.addFeature(Strophe.NS.VCARD);
                  converse.connection.disco.addFeature(Strophe.NS.BOSH);
                  converse.connection.disco.addFeature(Strophe.NS.DISCO_INFO);
                  converse.connection.disco.addFeature(Strophe.NS.MUC);
@@ -36111,55 +36129,150 @@ define("converse-templates", [
             'initiateOTR': $.proxy(chatbox.initiateOTR, chatbox),
             'maximize': $.proxy(chatbox.maximize, chatbox),
             'minimize': $.proxy(chatbox.minimize, chatbox),
-            'set': $.proxy(chatbox.set, chatbox)
+            'set': $.proxy(chatbox.set, chatbox),
+            'open': chatbox.trigger.bind(chatbox, 'show')
         };
     };
     return {
-        'getBuddy': function (jid) {
-            var contact = converse.roster.get(Strophe.getBareJidFromJid(jid));
-            if (contact) {
-                return contact.attributes;
-            }
-        },
-        'getChatBox': function (jid) {
-            var chatbox = converse.chatboxes.get(jid);
-            if (chatbox) {
-                return wrappedChatBox(chatbox);
-            }
-        },
-        'getRID': function () {
-            if (converse.expose_rid_and_sid && typeof converse.connection !== "undefined") {
-                return converse.connection.rid || converse.connection._proto.rid;
-            }
-            return null;
-        },
-        'getSID': function () {
-            if (converse.expose_rid_and_sid && typeof converse.connection !== "undefined") {
-                return converse.connection.sid || converse.connection._proto.sid;
-            }
-            return null;
-        },
         'initialize': function (settings, callback) {
             converse.initialize(settings, callback);
         },
-        'jQuery': $,
-        'openChatBox': function (jid) {
-            var contact = converse.roster.get(Strophe.getBareJidFromJid(jid));
-            if (contact) {
-                return wrappedChatBox(converse.chatboxviews.showChat(contact.attributes));
+        'contacts': {
+            'get': function (jids) {
+                var _transform = function (jid) {
+                    var contact = converse.roster.get(Strophe.getBareJidFromJid(jid));
+                    if (contact) {
+                        return contact.attributes;
+                    }
+                    return null;
+                };
+                if (typeof jids === "string") {
+                    return _transform(jids);
+                }
+                return _.map(jids, _transform);
             }
         },
+        'chats': {
+            'get': function (jids) {
+                var _transform = function (jid) {
+                    var chatbox = converse.chatboxes.get(jid);
+                    if (!chatbox) {
+                        var roster_item = converse.roster.get(jid);
+                        if (roster_item === undefined) {
+                            converse.log('Could not get roster item for JID '+jid, 'error');
+                            return null;
+                        }
+                        chatbox = converse.chatboxes.create({
+                            'id': jid,
+                            'jid': jid,
+                            'fullname': _.isEmpty(roster_item.get('fullname'))? jid: roster_item.get('fullname'),
+                            'image_type': roster_item.get('image_type'),
+                            'image': roster_item.get('image'),
+                            'url': roster_item.get('url')
+                        });
+                    }
+                    return wrappedChatBox(chatbox);
+                };
+                if (typeof jids === "string") {
+                    return _transform(jids);
+                }
+                return _.map(jids, _transform);
+            }
+        },
+        'tokens': {
+            'get': function (id) {
+                if (!converse.expose_rid_and_sid || typeof converse.connection === "undefined") {
+                    return null;
+                }
+                if (id.toLowerCase() === 'rid') {
+                    return converse.connection.rid || converse.connection._proto.rid;
+                } else if (id.toLowerCase() === 'sid') {
+                    return converse.connection.sid || converse.connection._proto.sid;
+                }
+            }
+        },
+        'listen': {
+            'once': function (evt, handler) {
+                converse.once(evt, handler);
+            },
+            'on': function (evt, handler) {
+                converse.on(evt, handler);
+            },
+            'not': function (evt, handler) {
+                converse.off(evt, handler);
+            },
+        },
+        'plugins': {
+            'add': function (name, callback) {
+                converse.plugins[name] = callback;
+            },
+            'remove': function (name) {
+                delete converse.plugins[name];
+            },
+            'extend': function (obj, attributes) {
+                /* Helper method for overriding or extending Converse's Backbone Views or Models
+                *
+                * When a method is overriden, the original will still be available
+                * on the _super attribute of the object being overridden.
+                *
+                * obj: The Backbone View or Model
+                * attributes: A hash of attributes, such as you would pass to Backbone.Model.extend or Backbone.View.extend
+                */
+                if (!obj.prototype._super) {
+                    obj.prototype._super = {};
+                }
+                _.each(attributes, function (value, key) {
+                    if (key === 'events') {
+                        obj.prototype[key] = _.extend(value, obj.prototype[key]);
+                    } else {
+                        if (typeof key === 'function') {
+                            obj.prototype._super[key] = obj.prototype[key];
+                        }
+                        obj.prototype[key] = value;
+                    }
+                });
+            }
+        },
+        'env': {
+            'jQuery': $,
+            'Strophe': Strophe,
+            '_': _
+        },
+
+        // Deprecated API methods
+        'getBuddy': function (jid) {
+            converse.log('WARNING: the "getBuddy" API method has been deprecated. Please use "contacts.get" instead');
+            return this.contacts.get(jid);
+        },
+        'getChatBox': function (jid) {
+            converse.log('WARNING: the "getChatBox" API method has been deprecated. Please use "chats.get" instead');
+            return this.chats.get(jid);
+        },
+        'openChatBox': function (jid) {
+            converse.log('WARNING: the "openChatBox" API method has been deprecated. Please use "chats.get(jid).open()" instead');
+            var chat = this.chats.get(jid);
+            if (chat) { chat.open(); }
+            return chat;
+        },
+        'getRID': function () {
+            converse.log('WARNING: the "getRID" API method has been deprecated. Please use "tokens.get(\'rid\')" instead');
+            return this.tokens.get('rid');
+        },
+        'getSID': function () {
+            converse.log('WARNING: the "getSID" API method has been deprecated. Please use "tokens.get(\'sid\')" instead');
+            return this.tokens.get('sid');
+        },
         'once': function (evt, handler) {
-            converse.once(evt, handler);
+            converse.log('WARNING: the "one" API method has been deprecated. Please use "listen.once" instead');
+            return this.listen.once(evt, handler);
         },
         'on': function (evt, handler) {
-            converse.on(evt, handler);
+            converse.log('WARNING: the "on" API method has been deprecated. Please use "listen.on" instead');
+            return this.listen.on(evt, handler);
         },
         'off': function (evt, handler) {
-            converse.off(evt, handler);
-        },
-        'registerPlugin': function (name, callback) {
-            converse.plugins[name] = callback;
+            converse.log('WARNING: the "off" API method has been deprecated. Please use "listen.not" instead');
+            return this.listen.not(evt, handler);
         }
     };
 }));
@@ -36269,7 +36382,13 @@ require.config({
         "status_option":            "src/templates/status_option",
         "toggle_chats":             "src/templates/toggle_chats",
         "toolbar":                  "src/templates/toolbar",
-        "trimmed_chat":             "src/templates/trimmed_chat"
+        "trimmed_chat":             "src/templates/trimmed_chat",
+
+        // custom libs 
+        "toastr": "components/toastr/toastr",
+        "datatables": "components/datatables/media/js/jquery.dataTables.min",
+        "datatables-bootstrap3": "components/datatables-bootstrap3/BS3/assets/js/datatables",
+        "blockui": "components/blockui/jquery.blockUI"
     },
 
     map: {
@@ -36309,10 +36428,14 @@ require.config({
         'strophe.disco':        { deps: ['strophe'] },
         'strophe.muc':          { deps: ['strophe'] },
         'strophe.roster':       { deps: ['strophe'] },
-        'strophe.vcard':        { deps: ['strophe'] }
+        'strophe.vcard':        { deps: ['strophe'] },
+
+        // custom        
+        'datatables-bootstrap3' : { deps: ['datatables'] },        
+        'toastr':               { exports: 'toastr' },
     }
 });
-require(["converse"], function(converse) {
+require(["converse", "jquery"], function(converse, $) {
     window.converse = converse;
 });
 
