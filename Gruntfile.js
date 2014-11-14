@@ -99,17 +99,32 @@ module.exports = function(grunt) {
             done();
         };
         exec('node ./node_modules/requirejs/bin/r.js -o src/build.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build.js optimize=none out=builds/converse.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-jquery.js &&' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-jquery.js optimize=none out=builds/converse.nojquery.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-locales-no-otr.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-locales-no-otr.js optimize=none out=builds/converse-no-locales-no-otr.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-otr.js &&' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-no-otr.js optimize=none out=builds/converse-no-otr.js && ' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-website-no-otr.js &&' +
-             'node ./node_modules/requirejs/bin/r.js -o src/build-website.js', callback);
+        'node ./node_modules/requirejs/bin/r.js -o src/build.js optimize=none out=builds/converse.js && ' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-jquery.js &&' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-jquery.js optimize=none out=builds/converse.nojquery.js && ' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-locales-no-otr.js && ' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-locales-no-otr.js optimize=none out=builds/converse-no-locales-no-otr.js && ' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-otr.js &&' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-no-otr.js optimize=none out=builds/converse-no-otr.js && ' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-website-no-otr.js &&' +
+        'node ./node_modules/requirejs/bin/r.js -o src/build-website.js', callback);
         // XXX: It might be possible to not have separate build config files. For example:
         // 'r.js -o src/build.js paths.converse-dependencies=src/deps-no-otr paths.locales=locale/nolocales out=builds/converse-no-locales-no-otr.min.js'
+    });
+
+    grunt.registerTask('build', 'Create a new release', function () {
+        var done = this.async();
+        var child_process = require('child_process');
+        var exec = child_process.exec;
+        var callback = function (err, stdout, stderr) {
+            if (err) {
+                grunt.log.write('build failed with error code '+err.code);
+                grunt.log.write(stderr);
+            }
+            grunt.log.write(stdout);
+            done();
+        };
+        exec('node ./node_modules/requirejs/bin/r.js -o src/build-dev.js', callback);
     });
 
     grunt.registerTask('minify', 'Create a new release', ['cssmin', 'jsmin']);

@@ -44,11 +44,11 @@ Screencasts
 Integration into other frameworks
 ---------------------------------
 
-* `Plone <http://plone.org>`_: 
+* `Plone <http://plone.org>`_:
     `collective.xmpp.chat <http://github.com/collective/collective.xmpp.chat>`_ is an add-on for Plone that uses *Converse.js*. Together with `collective.xmpp.core <http://github.com/collective/collective.xmpp.core>`_, it provides for single-signon-support (SSO) and also enables you to manually or automatically register your Plone users onto your XMPP server.
-* `Django <http://www.djangoproject.com>`_: 
+* `Django <http://www.djangoproject.com>`_:
     `django-conversejs <https://pypi.python.org/pypi/django-conversejs>`_ is an app that makes it easer to integrate *Converse.js* into Django.
-* `Roundcube <http://roundcube.net>`_: 
+* `Roundcube <http://roundcube.net>`_:
     `roundcube-converse.js-xmpp-plugin <https://github.com/priyadi/roundcube-converse.js-xmpp-plugin>`_ is a plugin for Roundcube Webmail.
 * `Wordpress <http://wordpress.org>`_:
     `ConverseJS <http://wordpress.org/plugins/conversejs>`_
@@ -102,3 +102,12 @@ Donations and tips are appreciated
 
 .. _`Integrated into a Plone site`: http://opkode.com/media/blog/instant-messaging-for-plone-with-javascript-and-xmpp
 .. _`In a static HTML page`: http://opkode.com/media/blog/2013/04/02/converse.js-xmpp-instant-messaging-with-javascript
+
+--------------
+Custom version
+--------------
+The library moment is included for converse and datetimepicker. They are different version, so we pick the last one.
+After the bower update, you must remove the datatables folder created.
+After that run: bower install datatables
+To compile the code: grunt build
+The new file is un builds/dev/

@@ -13,7 +13,7 @@ require.config({
         "jquery-private":           "src/jquery-private",
         "jquery.browser":           "components/jquery.browser/index",
         "jquery.easing":            "components/jquery-easing-original/index",          // XXX: Only required for https://conversejs.org website
-        "moment":                   "components/momentjs/moment",
+        "moment":                   "components/moment/min/moment-with-locales",
         "strophe":                  "components/strophe/strophe",
         "strophe.disco":            "components/strophejs-plugins/disco/strophe.disco",
         "strophe.muc":              "components/strophe.muc/index",
@@ -105,11 +105,13 @@ require.config({
         "toolbar":                  "src/templates/toolbar",
         "trimmed_chat":             "src/templates/trimmed_chat",
 
-        // custom libs 
-        "toastr": "components/toastr/toastr",
-        "datatables": "components/datatables/media/js/jquery.dataTables.min",
+        // custom libs
+        "converse-custom": "src/deps-custom",
+        "toastr": "components/toastr/toastr.min",
+        "DataTable": "components/datatables/media/js/jquery.dataTables.min",
         "datatables-bootstrap3": "components/datatables-bootstrap3/BS3/assets/js/datatables",
-        "blockui": "components/blockui/jquery.blockUI"
+        "blockUI": "components/blockui/jquery.blockUI",
+        "datetimepicker": "components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min"
     },
 
     map: {
@@ -151,9 +153,24 @@ require.config({
         'strophe.roster':       { deps: ['strophe'] },
         'strophe.vcard':        { deps: ['strophe'] },
 
-        // custom        
-        'datatables-bootstrap3' : { deps: ['datatables'] },        
-        'toastr':               { exports: 'toastr' },
+        // custom
+        "DataTable": {
+            deps: ['jquery'],
+            exports: 'DataTable'
+        },
+        'datatables-bootstrap3' : {
+            deps: ['DataTable']
+        },
+        'toastr':
+            { exports: 'toastr' },
+        "blockUI": {
+            deps: ['jquery'],
+            exports: 'blockUI'
+        },
+        "datetimepicker": {
+            deps: ['moment', 'jquery'],
+            exports: ['datetimepicker']
+        }
     }
 });
 require(["converse", "jquery"], function(converse, $) {

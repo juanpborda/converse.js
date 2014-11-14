@@ -1,7 +1,7 @@
 ({
     baseUrl: "../",
     name: "components/almond/almond.js",
-    out: "../builds/converse-no-locales-no-otr.min.js",
+    out: "../builds/converse-no-locales-no-otr.dev.min.js",
     include: ['main'],
     mainConfigFile: '../main.js',
     paths: {
